@@ -4,65 +4,8 @@ import { AuthContext } from '../context/AuthContext';
 
 /**
  * Pantalla de autenticación de usuario.
- * Maneja la entrada de credenciales y la redirección inicial.
+ * Maneja la entrada de credenciales y la redirección inicial a la tienda.
  */
-/**
- * Muestra la información detallada de un producto seleccionado.
- * Permite al usuario agregar el producto al carrito de compras.
- */
-const ProductDetailScreen = ({ route, navigation }) => {
-    const [username, setUsername] = useState('mor_2314');
-    const [password, setPassword] = useState('83r5^_');  //lo agregue aqui oara sea el usuario por defecto por defecto
-    const { login } = useContext(AuthContext);
-
-    const handleLogin = async () => {
-        if (!username || !password) {
-            Alert.alert('Error', 'Please enter username and password');
-            return;
-        }
-        try {
-            const result = await login(username, password);
-            if (!result.success) {
-                Alert.alert('Login Failed', result.error);
-            }
-        } catch (e) {
-            console.error('Login error detail:', e.response?.data || e.errorMessage || e.message);
-            Alert.alert('Login Failed', e.response?.data?.message || e.message || 'An unexpected error occurred.');
-        }
-    };
-
-    return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={styles.container}
-        >
-            <View style={styles.card}>
-                <Text style={styles.title}>Fake Store</Text>
-                <Text style={styles.subtitle}>Welcome Back</Text>
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="Username"
-                    value={username}
-                    onChangeText={setUsername}
-                    autoCapitalize="none"
-                />
-
-                <TextInput
-                    style={styles.input}
-                    placeholder="Password"
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                />
-
-                <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                    <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-            </View>
-        </KeyboardAvoidingView>
-    );
-};
 
 const LoginScreen = () => {
     const [username, setUsername] = useState('mor_2314');
