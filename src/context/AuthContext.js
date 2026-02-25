@@ -29,6 +29,13 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    /**
+   * Realiza la autenticación del usuario contra la API.
+   * Si tiene éxito, almacena el token y los datos del usuario localmente.
+   * @param {string} username - Nombre del usuario (Ej: mor_2314).
+   * @param {string} password - Contraseña del usuario.
+   * @returns {Promise<Object>} Resultado de la operación {success: boolean, error?: string}.
+   */
     const login = async (username, password) => {
         try {
             const response = await api.post('/auth/login', { username, password });
@@ -48,6 +55,9 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    /**
+   * Cierra la sesión activa eliminando los datos del almacenamiento local y limpiando el estado.
+   */
     const logout = async () => {
         await AsyncStorage.removeItem('@FakeStore:token');
         await AsyncStorage.removeItem('@FakeStore:user');

@@ -3,6 +3,10 @@ import { StyleSheet, View, Text, FlatList, Image, TouchableOpacity, Alert } from
 import { Trash2, ShoppingBag, XCircle, CreditCard, Plus, Minus } from 'lucide-react-native';
 import { CartContext } from '../context/CartContext';
 
+/**
+ * Pantalla del carrito de compras.
+ * Gestiona el listado de productos, subtotales y acciones finales (Pagar/Cancelar).
+ */
 const CartScreen = ({ navigation }) => {
     const { cart, removeFromCart, updateQuantity, clearCart, getSubtotal } = useContext(CartContext);
     const total = getSubtotal();

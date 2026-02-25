@@ -29,6 +29,11 @@ export const CartProvider = ({ children }) => {
         }
     };
 
+    /**
+   * Agrega un producto al carrito. Si ya existe, incrementa su cantidad.
+   * Persiste el estado actualizado en AsyncStorage.
+   * @param {Object} product - Objeto del producto obtenido de la API.
+   */
     const addToCart = (product) => {
         setCart((prevCart) => {
             const existingProduct = prevCart.find((item) => item.id === product.id);
@@ -45,6 +50,10 @@ export const CartProvider = ({ children }) => {
         });
     };
 
+    /**
+   * Elimina un producto específico del carrito por su ID.
+   * @param {number} productId - ID único del producto.
+   */
     const removeFromCart = (productId) => {
         setCart((prevCart) => {
             const newCart = prevCart.filter((item) => item.id !== productId);
@@ -67,6 +76,9 @@ export const CartProvider = ({ children }) => {
         });
     };
 
+    /**
+   * Vacía completamente el carrito y limpia AsyncStorage.
+   */
     const clearCart = async () => {
         setCart([]);
         await AsyncStorage.removeItem('@FakeStore:cart');

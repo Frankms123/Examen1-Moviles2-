@@ -17,6 +17,10 @@ const ProductListScreen = ({ navigation }) => {
         fetchData();
     }, []);
 
+    /**
+     * Obtiene la lista de productos y categorías desde la API de forma paralela.
+     * Actualiza los estados de productos, categorías y el estado de carga.
+     */
     const fetchData = async () => {
         try {
             const [prodRes, catRes] = await Promise.all([
@@ -32,6 +36,9 @@ const ProductListScreen = ({ navigation }) => {
         }
     };
 
+    /**
+     * Filtra los productos localmente basándose en la categoría seleccionada por el usuario.
+     */
     const filteredProducts = selectedCategory === 'all'
         ? products
         : products.filter(p => p.category === selectedCategory);

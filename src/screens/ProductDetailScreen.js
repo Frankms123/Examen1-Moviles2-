@@ -3,6 +3,10 @@ import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity, Alert } fr
 import { Star, ShoppingCart } from 'lucide-react-native';
 import { CartContext } from '../context/CartContext';
 
+/**
+ * Pantalla de detalle del producto.
+ * Muestra precio, descripción, categoría y opción de compra.
+ */
 const ProductDetailScreen = ({ route, navigation }) => {
     const { product } = route.params;
     const { addToCart } = useContext(CartContext);
